@@ -10,16 +10,16 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
-  response.render('pages/index');
+	response.render('pages/index');
 });
 
 app.post('/callback', function(request, response) {
-    console.log(request.body);
-    response.render('index', { title: 'Express Sample Posted ver 0.0.1', word: request.body.word});
+	console.log(request.body);
+	response.render('pages/index');
 });
 
 app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+	console.log('Node app is running on port', app.get('port'));
 });
 
 
