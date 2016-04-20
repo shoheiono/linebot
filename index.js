@@ -15,7 +15,8 @@ app.get('/', function(req, response) {
 });
 
 app.post('/callback', function(req, res) {
-	console.log('\n\nresponse: \n'+ res + '\n\n');
+	console.log('\n\nresponse:\n\n');
+	console.log('\n\n'+ res.__proto__ + '\n\n');
 	var json = req.body;
 	//ヘッダーを定義
 	var headers = {
@@ -52,8 +53,6 @@ app.post('/callback', function(req, res) {
 	};
 
 	request.post(options, function (error, response, body) {
-		response.send('status code:' + response.statusCode);
-
 		if (!error && response.statusCode == 200) {
 			console.log(body);
 		} else {
