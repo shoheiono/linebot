@@ -15,7 +15,7 @@ app.get('/', function(request, response) {
 
 app.post('/callback', function(request, response) {
 	console.log(request.body);
-	response.render('pages/index');
+	response.send('Hello World!');
 });
 
 app.listen(app.get('port'), function() {
