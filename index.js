@@ -15,6 +15,7 @@ app.get('/', function(req, response) {
 });
 
 app.post('/callback', function(req, res) {
+	console.log('\n\nresponse: '+ JSON.stringify(res) + '\n\n');
 	var json = req.body;
 	//ヘッダーを定義
 	var headers = {
@@ -27,19 +28,18 @@ app.post('/callback', function(req, res) {
 	var to_array = [];
 	// to_array.push(json['result'][0]['content']['from']);
 	// 送信データ作成
-	console.log(req.body);
 	var data = {
 		'to': to_array,
 		'toChannel': 1383378250,			//固定
 		'eventType':'140177271400161403',	//固定
 		"content": {
-			"messageNotified": 0,
-			"messages": [
-				{
-					"contentType": 1,
-					"text": 'こんにちは',
-				}
-			]
+			// "messageNotified": 0,
+			// "messages": [
+			// 	{
+			// 		"contentType": 1,
+			// 		"text": 'こんにちは',
+			// 	}
+			// ]
 		}
 	};
 	//オプションを定義
@@ -51,9 +51,8 @@ app.post('/callback', function(req, res) {
 		body: data
 	};
 
-	console.log(options);
 	request.post(options, function (error, response, body) {
-		res.send('status code:' + response.statusCode);
+		response.send('status code:' + response.statusCode);
 
 		if (!error && response.statusCode == 200) {
 			console.log(body);
