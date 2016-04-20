@@ -14,50 +14,50 @@ app.get('/', function(req, response) {
 	response.render('pages/index');
 });
 
-// app.post('/callback', function(req, res) {
-// 	var json = req.body;
-// 	res.send('req');
-// 	//ヘッダーを定義
-// 	var headers = {
-// 		'Content-Type' : 'application/json; charset=UTF-8',
-// 		'X-Line-ChannelID' : process.env.LINE_CHANNEL_ID,
-// 		'X-Line-ChannelSecret' : process.env.LINE_CHANNEL_SECRET,
-// 		'X-Line-Trusted-User-With-ACL' : process.env.LINE_CHANNEL_MID
-// 	};
-// 	// 送信相手の設定（配列）
-// 	var to_array = [];
-// 	to_array.push(json['result'][0]['content']['from']);
-// 	// 送信データ作成
-// 	var data = {
-// 		'to': to_array,
-// 		'toChannel': 1383378250,			//固定
-// 		'eventType':'140177271400161403',	//固定
-// 		"content": {
-// 			"messageNotified": 0,
-// 			"messages": [
-// 				{
-// 					"contentType": 1,
-// 					"text": 'こんにちは',
-// 				}
-// 			]
-// 		}
-// 	};
-// 	//オプションを定義
-// 	var options = {
-// 		url: 'https://trialbot-api.line.me/v1/events',
-// 		proxy : process.env.FIXIE_URL,
-// 		headers: headers,
-// 		json: true,
-// 		body: data
-// 	};
-// 	req.post(options, function (error, response, body) {
-// 		if (!error && response.statusCode == 200) {
-// 			console.log(body);
-// 		} else {
-// 			console.log('error: '+ JSON.stringify(response));
-// 		}
-// 	});
-// });
+app.post('/callback', function(req, res) {
+	var json = req.body;
+	res.send('req');
+	//ヘッダーを定義
+	var headers = {
+		'Content-Type' : 'application/json; charset=UTF-8',
+		'X-Line-ChannelID' : process.env.LINE_CHANNEL_ID,
+		'X-Line-ChannelSecret' : process.env.LINE_CHANNEL_SECRET,
+		'X-Line-Trusted-User-With-ACL' : process.env.LINE_CHANNEL_MID
+	};
+	// 送信相手の設定（配列）
+	var to_array = [];
+	to_array.push(json['result'][0]['content']['from']);
+	// 送信データ作成
+	var data = {
+		'to': to_array,
+		'toChannel': 1383378250,			//固定
+		'eventType':'140177271400161403',	//固定
+		"content": {
+			"messageNotified": 0,
+			"messages": [
+				{
+					"contentType": 1,
+					"text": 'こんにちは',
+				}
+			]
+		}
+	};
+	//オプションを定義
+	var options = {
+		url: 'https://trialbot-api.line.me/v1/events',
+		proxy : process.env.FIXIE_URL,
+		headers: headers,
+		json: true,
+		body: data
+	};
+	req.post(options, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			console.log(body);
+		} else {
+			console.log('error: '+ JSON.stringify(response));
+		}
+	});
+});
 
 app.listen(app.get('port'), function() {
 	console.log('Node app is running on port', app.get('port'));
