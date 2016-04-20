@@ -16,7 +16,8 @@ app.get('/', function(req, response) {
 
 app.post('/callback', function(req, res) {
 	var json = req.body;
-	res.send('req');
+	console.log(process.env.FIXIE_URL);
+	// res.send(json);
 	//ヘッダーを定義
 	var headers = {
 		'Content-Type' : 'application/json; charset=UTF-8',
@@ -26,7 +27,7 @@ app.post('/callback', function(req, res) {
 	};
 	// 送信相手の設定（配列）
 	var to_array = [];
-	to_array.push(json['result'][0]['content']['from']);
+	// to_array.push(json['result'][0]['content']['from']);
 	// 送信データ作成
 	var data = {
 		'to': to_array,
@@ -50,7 +51,7 @@ app.post('/callback', function(req, res) {
 		json: true,
 		body: data
 	};
-	req.post(options, function (error, response, body) {
+	request.post(options, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			console.log(body);
 		} else {
