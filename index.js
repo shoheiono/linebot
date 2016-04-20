@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-// var request = require('request');
+var request = require('request');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -23,12 +23,11 @@ app.post('/callback', function(req, res) {
 		'X-Line-ChannelSecret' : process.env.LINE_CHANNEL_SECRET,
 		'X-Line-Trusted-User-With-ACL' : process.env.LINE_MID
 	};
-	console.log(headers);
 	// 送信相手の設定（配列）
 	var to_array = [];
 	// to_array.push(json['result'][0]['content']['from']);
 	// 送信データ作成
-	console.log(to_array);
+	console.log(req.body);
 	var data = {
 		'to': to_array,
 		'toChannel': 1383378250,			//固定
