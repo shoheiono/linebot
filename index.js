@@ -13,8 +13,9 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.get('/callback', function(request, response) {
-  response.render('pages/index');
+app.post('/callback', function(request, response) {
+    console.log(request.body);
+    response.render('index', { title: 'Express Sample Posted ver 0.0.1', word: request.body.word});
 });
 
 app.listen(app.get('port'), function() {
