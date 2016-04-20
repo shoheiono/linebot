@@ -16,8 +16,8 @@ app.get('/', function(req, response) {
 
 app.post('/callback', function(req, res) {
 	var json = req.body;
-	console.log(process.env.FIXIE_URL);
-	// res.send(json);
+	console.log(json);
+	console.log(req);
 	//ヘッダーを定義
 	var headers = {
 		'Content-Type' : 'application/json; charset=UTF-8',
@@ -52,6 +52,8 @@ app.post('/callback', function(req, res) {
 		body: data
 	};
 	request.post(options, function (error, response, body) {
+		res.send('status code:' + response.statusCode);
+
 		if (!error && response.statusCode == 200) {
 			console.log(body);
 		} else {
