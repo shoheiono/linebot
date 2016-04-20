@@ -16,7 +16,6 @@ app.get('/', function(req, response) {
 
 app.post('/callback', function(req, res) {
 	var json = req.body;
-	console.log(process.env);
 	//ヘッダーを定義
 	var headers = {
 		'Content-Type' : 'application/json; charset=UTF-8',
@@ -24,10 +23,12 @@ app.post('/callback', function(req, res) {
 		'X-Line-ChannelSecret' : process.env.LINE_CHANNEL_SECRET,
 		'X-Line-Trusted-User-With-ACL' : process.env.LINE_CHANNEL_MID
 	};
+	console.log(headers);
 	// 送信相手の設定（配列）
 	var to_array = [];
 	// to_array.push(json['result'][0]['content']['from']);
 	// 送信データ作成
+	console.log(to_array);
 	var data = {
 		'to': to_array,
 		'toChannel': 1383378250,			//固定
