@@ -21,7 +21,7 @@ app.post('/callback', function(req, res) {
 		'Content-Type' : 'application/json; charset=UTF-8',
 		'X-Line-ChannelID' : process.env.LINE_CHANNEL_ID,
 		'X-Line-ChannelSecret' : process.env.LINE_CHANNEL_SECRET,
-		'X-Line-Trusted-User-With-ACL' : process.env.LINE_CHANNEL_MID
+		'X-Line-Trusted-User-With-ACL' : process.env.LINE_MID
 	};
 	console.log(headers);
 	// 送信相手の設定（配列）
