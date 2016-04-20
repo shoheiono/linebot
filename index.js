@@ -34,13 +34,13 @@ app.post('/callback', function(req, res) {
 		'toChannel': 1383378250,			//固定
 		'eventType':'140177271400161403',	//固定
 		"content": {
-			// "messageNotified": 0,
-			// "messages": [
-			// 	{
-			// 		"contentType": 1,
-			// 		"text": 'こんにちは',
-			// 	}
-			// ]
+			"messageNotified": 0,
+			"messages": [
+				{
+					"contentType": 1,
+					"text": 'こんにちは',
+				}
+			]
 		}
 	};
 	//オプションを定義
