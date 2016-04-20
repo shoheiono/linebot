@@ -15,7 +15,7 @@ app.get('/', function(req, response) {
 });
 
 app.post('/callback', function(req, res) {
-	console.log('\n\nresponse: '+ JSON.stringify(res) + '\n\n');
+	console.log('\n\nresponse: \n'+ res + '\n\n');
 	var json = req.body;
 	//ヘッダーを定義
 	var headers = {
