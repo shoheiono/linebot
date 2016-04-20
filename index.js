@@ -16,15 +16,13 @@ app.get('/', function(req, response) {
 
 app.post('/callback', function(req, res) {
 	var json = req.body;
-	console.log(json);
-
-	res.send(req);
+	res.send('req');
 	//ヘッダーを定義
 	var headers = {
 		'Content-Type' : 'application/json; charset=UTF-8',
-		'X-Line-ChannelID' : '<Your Channel ID>',
-		'X-Line-ChannelSecret' : '<Your Channel Secret>',
-		'X-Line-Trusted-User-With-ACL' : '<Your MID>'
+		'X-Line-ChannelID' : process.env.LINE_CHANNEL_ID,
+		'X-Line-ChannelSecret' : process.env.LINE_CHANNEL_SECRET,
+		'X-Line-Trusted-User-With-ACL' : process.env.LINE_CHANNEL_MID
 	};
 	// 送信相手の設定（配列）
 	var to_array = [];
