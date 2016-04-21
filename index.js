@@ -1,10 +1,13 @@
 var express = require('express');
 var app = express();
 var request = require('request');
+var bodyParser = require('body-parser');
 
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({extended: true}));	// JSONの送信を許可
+app.use(bodyParser.json());							// JSONのパースを楽に（受信時）
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
@@ -15,8 +18,6 @@ app.get('/', function(req, response) {
 });
 
 app.post('/callback', function(req, res) {
-	console.log('\n\nresponse:\n\n');
-	console.log('\n\n'+ res.__proto__ + '\n\n');
 	var json = req.body;
 	//ヘッダーを定義
 	var headers = {
@@ -27,7 +28,8 @@ app.post('/callback', function(req, res) {
 	};
 	// 送信相手の設定（配列）
 	var to_array = [];
-	// to_array.push(json['result'][0]['content']['from']);
+	to_array.push(json['result'][0]['content']['from']);
+	console.log(to_array);
 	// 送信データ作成
 	var data = {
 		'to': to_array,
