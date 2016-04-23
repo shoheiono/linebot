@@ -40,7 +40,7 @@ app.post('/callback', function(req, res) {
 			"messages": [
 				{
 					"contentType": 1,
-					"text": 'こんにちは',
+					"text": 'こんにちはだよーん！！',
 				}
 			]
 		}
